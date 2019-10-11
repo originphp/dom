@@ -1,0 +1,32 @@
+{
+    "name": "originphp/dom",
+    "description": "Origin DOM",
+    "type": "library",
+    "keywords": [
+        "originphp"
+    ],
+    "homepage": "https://www.originphp.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jamiel Sharief",
+            "email": "js@originphp.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Origin\\Dom\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Origin\\Test\\Dom\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    }
+}
