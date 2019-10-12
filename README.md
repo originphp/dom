@@ -29,7 +29,7 @@ At the moment it does not support the `~>+^|$` selectors.
 To install this package
 
 ```linux
-$ composer require origin/dom
+$ composer require originphp/dom
 ```
 
 ## Usage
