@@ -21,8 +21,6 @@ declare(strict_types = 1);
 namespace Origin\Dom;
 
 use DOMDocument;
-use Origin\Dom\DomElement;
-use Origin\Dom\QuerySelectorTrait;
 
 class Dom extends DOMDocument
 {
