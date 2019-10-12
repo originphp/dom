@@ -1,7 +1,7 @@
 # DOM
 
 ![license](https://img.shields.io/badge/license-MIT-brightGreen.svg)
-[![build](https://travis-ci.org/originphp/dom.svg?branch=masterhttps://travis-ci.org/originphp/dom.svg?branch=master)](https://travis-ci.org/originphp/dom)
+[![build](https://travis-ci.org/originphp/dom.svg?branch=master)](https://travis-ci.org/originphp/dom)
 [![coverage](https://coveralls.io/repos/github/originphp/dom/badge.svg?branch=master)](https://coveralls.io/github/originphp/dom?branch=master)
 
 The DOM utility extends the dom extension and provides javascript style query selectors (even when xpath fails).
