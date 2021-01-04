@@ -14,7 +14,6 @@
 declare(strict_types = 1);
 namespace Origin\Dom;
 
-
  /**
   * This extends the DOM extension, it gives the ability to use a javascript style query selectors
   * to find elements.
@@ -53,23 +52,25 @@ namespace Origin\Dom;
   */
  trait QuerySelectorTrait
  {
+     private $queryResults = [];
+     
      /**
-         * Returns the first element that matches the specifiied selector or group of selectors.
-        *
-        * @param string $path
-        * $dom->querySelector('.className');
-        * $dom->querySelector('h2.className');
-        * $dom->querySelector('h2');
-        * $dom->querySelector('#myId');
-        * $dom->querySelector('section.content h1.heading span');
-        * $dom->querySelector('div.main span:first-child');
-        * $dom->querySelector('div.main span:last-child');
-        * $dom->querySelector('div.main span:nth-child(3)');
-        * $dom->querySelector('h1,h2');
-        * $dom->querySelector('a[data-control-name="company-details"]);
-        * @param \DOMElement $dom
-        * @return \DOMElement|null
-        */
+      * Returns the first element that matches the specifiied selector or group of selectors.
+      *
+      * @param string $path
+      * $dom->querySelector('.className');
+      * $dom->querySelector('h2.className');
+      * $dom->querySelector('h2');
+      * $dom->querySelector('#myId');
+      * $dom->querySelector('section.content h1.heading span');
+      * $dom->querySelector('div.main span:first-child');
+      * $dom->querySelector('div.main span:last-child');
+      * $dom->querySelector('div.main span:nth-child(3)');
+      * $dom->querySelector('h1,h2');
+      * $dom->querySelector('a[data-control-name="company-details"]);
+      * @param \DOMElement $dom
+      * @return \DOMElement|null
+      */
      public function querySelector(string $path)
      {
          $result = $this->runQuery($path, $this);
@@ -124,7 +125,7 @@ namespace Origin\Dom;
       */
      protected function runQuery(string $path, $dom = null) : array
      {
-         $this->results = [];
+         $this->queryResults = [];
        
          if ($dom === null) {
              $dom = $this;
@@ -179,12 +180,12 @@ namespace Origin\Dom;
              if ($elements) {
                  // hanlde span:lastChild
                  if ($n === 'first-child') {
-                     $this->results[] = $elements[0];
+                     $this->queryResults[] = $elements[0];
                  } elseif ($n === 'last-child') {
-                     $this->results[] = $elements[count($elements) - 1];
+                     $this->queryResults[] = $elements[count($elements) - 1];
                  } elseif (preg_match('/nth-child\((\d+)\)/', $n, $matches)) {
                      if (isset($matches[1]) and isset($elements[$matches[1]])) {
-                         $this->results[] = $elements[$matches[1]];
+                         $this->queryResults[] = $elements[$matches[1]];
                      }
                  }
              }
@@ -192,21 +193,21 @@ namespace Origin\Dom;
              foreach ($dom->getElementsByTagName($tag) as $element) {
                  if ($attrName) {
                      if ($element->hasAttribute($attrName) and $element->getAttribute($attrName) === $attrValue) {
-                         $this->results[] = $element;
+                         $this->queryResults[] = $element;
                      }
                  } elseif ($class === null or ($element->hasAttribute('class') and in_array($class, explode(' ', $element->getAttribute('class'))))) {
-                     $this->results[] = $element;
+                     $this->queryResults[] = $element;
                  }
              }
          }
 
          # Go Next Level Down
          if ($paths) {
-             foreach ($this->results as $result) {
+             foreach ($this->queryResults as $result) {
                  $this->runQuery(implode(' ', $paths), $result);
              }
          }
          
-         return $this->results;
+         return $this->queryResults;
      }
  }
