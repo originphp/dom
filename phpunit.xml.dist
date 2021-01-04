@@ -6,7 +6,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="Origin DOM">
+    <testsuite name="OriginPHP DOM">
       <directory>./tests/</directory>
     </testsuite>
   </testsuites>
