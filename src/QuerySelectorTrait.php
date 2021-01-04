@@ -1,8 +1,7 @@
 <?php
-declare(strict_types = 1);
 /**
  * OriginPHP Framework
- * Copyright 2018 - 2019 Jamiel Sharief.
+ * Copyright 2018 - 2021 Jamiel Sharief.
  *
  * Licensed under The MIT License
  * The above copyright notice and this permission notice shall be included in all copies or substantial
@@ -12,15 +11,14 @@ declare(strict_types = 1);
  * @link        https://www.originphp.com
  * @license     https://opensource.org/licenses/mit-license.php MIT License
  */
+declare(strict_types = 1);
+namespace Origin\Dom;
+
 
  /**
   * This extends the DOM extension, it gives the ability to use a javascript style query selectors
   * to find elements.
-  */
-
-namespace Origin\Dom;
-
-/**
+  *
   * This does the magic want it work like javascript querySelector, querySelectorAll.
   * It works with the following selectors:
   * - .class
@@ -50,7 +48,6 @@ namespace Origin\Dom;
   * $dom->querySelector('h1,h2');
   * $dom->querySelector('a[data-control-name="company-details"]);
   *
-  * @todo
   * @see https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
   * @see https://www.w3schools.com/cssref/css_selectors.asp
   */
